@@ -1,5 +1,5 @@
 ---
-title: "A5 RMarkdown"
+title: "2018 Mass Shooting Data Report"
 output: html_document
 ---
 
@@ -7,22 +7,17 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r include=FALSE}
+source("analysis.R")
 ```
 
-## Including Plots
+## Summary Information
+Unfortunately, the USA consistently has the most number of mass shootings per year compared to nations all across the globe. Guns and mass shooters have taken the lives of so many victims, and the year 2018 was no exception. There were a total number of `r total_shootings` mass shootings that occurred in 2018. A total number of `r lives_lost` lives were lost in these shootings. The most impacted city (aka the city with the highest mass shooting death toll) was `r most_impacted_city`. The most impacted state (aka the state with the highest mass shooting death toll) was `r most_impacted_state`. And finally, the city with the highest number of people injured due to mass shootings was `r most_injured_city`. The data I used to calculate these occurrences can be found at this link: http://www.shootingtracker.com/ (specifically the 2018 dataset)
 
-You can also embed plots, for example:
+## Summary Table
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+## Notable Incident: Parkland Shooting
+A very notable mass shooting that occurred in 2018 was the Parkland mass shooting that occurred on `r parkland_date` in `r parkland_city` of `r parkland_state`. There were a total number of `r parkland_num_injured` people injured and they all died, resulting in `r parkland_num_killed` fatalities. 
+For more information about the Parkland shooting, visit https://www.nbcnews.com/news/us-news/police-respond-shooting-parkland-florida-high-school-n848101
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
