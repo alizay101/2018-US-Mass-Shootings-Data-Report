@@ -38,17 +38,9 @@ parkland_city <- parkland_data$city
 parkland_state <- parkland_data$state
 parkland_num_injured <- parkland_data$num_injured
 parkland_num_killed <- parkland_data$num_killed
+View(shootings_2018)
 
-# making interactive map
-install.packages("leaflet")
-library(leaflet)
-leaflet(data = shootings_2018) %>%
-  addProviderTiles("CartoDB.Positron") %>%
-  setView(lng = -98.68 ,lat = 35.69, zoom = 3.2) %>%
-  addCircles(
-    lat = ~lat,
-    lng = ~long,
-    stroke = FALSE,
-    popup = ~num_killed
-  )
+
+
+
 

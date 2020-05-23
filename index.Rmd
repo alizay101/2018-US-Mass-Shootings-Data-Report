@@ -4,11 +4,14 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
+source("scripts/analysis.R")
+source("scripts/make_map.R")
+source("scripts/make_bar_graph.R")
+source("scripts/summary_table.R")
+library("dplyr")
+library("ggplot2")
+library("leaflet")
 knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r include=FALSE}
-source("analysis.R")
 ```
 
 ## Summary Information
@@ -16,8 +19,38 @@ Unfortunately, the USA consistently has the most number of mass shootings per ye
 
 ## Summary Table
 
+```{r echo=FALSE}
+library(knitr)
+cleaned_data_table <- read.csv("data/shootings_2018.csv")
+create_table(data)
+```
+
 ## Notable Incident: Parkland Shooting
 A very notable mass shooting that occurred in 2018 was the Parkland mass shooting that occurred on `r parkland_date` in `r parkland_city` of `r parkland_state`. There were a total number of `r parkland_num_injured` people injured and they all died, resulting in `r parkland_num_killed` fatalities. 
 For more information about the Parkland shooting, visit https://www.nbcnews.com/news/us-news/police-respond-shooting-parkland-florida-high-school-n848101
 
+## Interactive Map of 2018 Shootings Across USA
 
+This map provides details for every single mass shooting which has occurred in the USA in the year 2018. By clicking on the circles, you can view the city, the number of people killed, and the number of people injured in the shooting. The bigger the circle, the greater the number of people killed. 
+
+```{r map, echo = FALSE}
+cleaned_data_table <- read.csv("data/shootings_2018.csv")
+create_map(cleaned_data_table)
+```
+
+Insights:
+1. One thing I noticed was that the most deadly mass shootings seem to have occurred in coastal parts of the country such as the east coast, Florida, and California
+2. Almost no mass shootings occurred in the middle-America region. 
+
+## Plot
+
+Question: I want to know which states had the highest death tolls as a result of mass shootings
+
+```{r bar_graph, echo = FALSE}
+cleaned_data_table <- read.csv("data/shootings_2018.csv")
+make_bar_graph(cleaned_data_table)
+```
+
+Insights:
+1. The state with the highest number of people killed by mass shootings overall was California
+2. This data is interesting because although Florida had the highest number of people killed in a SINGLE mass shooting, it ranks 2nd in number of people killed by mass shootings overall
