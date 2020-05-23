@@ -11,6 +11,7 @@ source("scripts/summary_table.R")
 library("dplyr")
 library("ggplot2")
 library("leaflet")
+library("knitr")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -20,9 +21,8 @@ Unfortunately, the USA consistently has the most number of mass shootings per ye
 ## Summary Table
 
 ```{r echo=FALSE}
-library(knitr)
-cleaned_data_table <- read.csv("data/shootings_2018.csv")
-create_table(data)
+cleaned_data_table <- read.csv("C:/Users/Girls Who Code/Desktop/info201/a5-duaazaheer1/shootings-2018.csv")
+create_table(cleaned_data_table)
 ```
 
 ## Notable Incident: Parkland Shooting
@@ -34,7 +34,7 @@ For more information about the Parkland shooting, visit https://www.nbcnews.com/
 This map provides details for every single mass shooting which has occurred in the USA in the year 2018. By clicking on the circles, you can view the city, the number of people killed, and the number of people injured in the shooting. The bigger the circle, the greater the number of people killed. 
 
 ```{r map, echo = FALSE}
-cleaned_data_table <- read.csv("data/shootings_2018.csv")
+cleaned_data_table <- read.csv("shootings-2018.csv")
 create_map(cleaned_data_table)
 ```
 
@@ -47,7 +47,7 @@ Insights:
 Question: I want to know which states had the highest death tolls as a result of mass shootings
 
 ```{r bar_graph, echo = FALSE}
-cleaned_data_table <- read.csv("data/shootings_2018.csv")
+cleaned_data_table <- read.csv("shootings-2018.csv")
 make_bar_graph(cleaned_data_table)
 ```
 

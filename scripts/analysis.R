@@ -1,29 +1,29 @@
 library(dplyr)
-#Reading Data
+# Reading Data
 shootings_2018 <- read.csv("data/shootings-2018.csv", stringsAsFactors = FALSE)
 View(shootings_2018)
 
-#total shootings
+# total shootings
 total_shootings <- nrow(shootings_2018)
 
-#how many lives lost
+# how many lives lost
 lives_lost <- sum(shootings_2018$num_killed)
 
-#most impacted city (city with highest shooting death toll in 2018)
+# most impacted city (city with highest shooting death toll in 2018)
 most_impacted_city <- shootings_2018 %>%
   group_by(city) %>%
   summarize(total_deaths = sum(num_killed, na.rm = TRUE)) %>%
   filter(total_deaths == max(total_deaths)) %>%
   pull(city)
 
-#most impacted state (state with highest shooting death toll in 2018)
+# most impacted state (state with highest shooting death toll in 2018)
 most_impacted_state <- shootings_2018 %>%
   group_by(state) %>%
   summarize(total_deaths = sum(num_killed, na.rm = TRUE)) %>%
   filter(total_deaths == max(total_deaths)) %>%
   pull(state)
 
-#city with highest number of people injured
+# city with highest number of people injured
 most_injured_city <- shootings_2018 %>%
   group_by(city) %>%
   summarize(total_deaths = sum(num_killed, na.rm = TRUE)) %>%
@@ -40,7 +40,8 @@ parkland_num_injured <- parkland_data$num_injured
 parkland_num_killed <- parkland_data$num_killed
 View(shootings_2018)
 
-
-
-
-
+# styling
+library(lintr)
+library(styler)
+style_file("scripts/analysis.R")
+lint("scripts/analysis.R")
